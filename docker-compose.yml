@@ -6,6 +6,8 @@ services:
     ports:
       - 5902:5900
       - 24642:24642/udp
+    cap_add:
+      - NET_ADMIN
     volumes:
       - /data/valley:/data
       - ./init.sh:/init.sh
