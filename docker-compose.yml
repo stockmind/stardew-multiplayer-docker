@@ -6,14 +6,16 @@ services:
     ports:
       - 5902:5900
       - 24642:24642/udp
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VNCPASS=STRONGPASSWORDHERE
     volumes:
-      - /data/valley:/data
+      - ./data/valley:/data
       - ./init.sh:/init.sh
       - ./asound.conf:/etc/asound.conf
       - ./config:/root/.config/i3/config
-      - /data/valley_saves:/root/.config/StardewValley/Saves/
-    devices:
-      - /dev/snd:/dev/snd
+      - ./data/valley_saves:/root/.config/StardewValley/Saves/
     entrypoint:
       - /bin/sh
       - /init.sh
